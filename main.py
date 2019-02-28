@@ -36,7 +36,7 @@ print(train_labels.shape)
 
 import matplotlib.pyplot as plt
 
-#Let's show image with id 16
+#Let's show image with id 13
 img_idx = 13
 
 plt.title('Label: {}'.format(train_labels.iloc[img_idx]['Category']))
