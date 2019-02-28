@@ -41,6 +41,8 @@ img_idx = 13
 
 plt.title('Label: {}'.format(train_labels.iloc[img_idx]['Category']))
 plt.imshow(train_images[img_idx])
+
+# have a look on this image
 plt.show()
 
 '''
