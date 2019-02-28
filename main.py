@@ -16,7 +16,6 @@ print(os.listdir(input_path))
 
 # Any results you write to the current directory are saved as output.
 
-
 #Files are stored in pickle format.
 #Load them like how you load any pickle. The data is a numpy array
 import pandas as pd
