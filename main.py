@@ -48,12 +48,4 @@ plt.show()
 '''
 Step 2: Train models
 '''
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-import torch.utils.data
-from torch.autograd import Variable
-import tensorflow as tf
-
-from sklearn.model_selection import train_test_split
 
