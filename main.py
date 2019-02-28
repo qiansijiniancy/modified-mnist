@@ -1,6 +1,6 @@
 ###  Mini proj 3
 ### McGill University
-### Sidi Yang
+### Group 16
 
 '''
 Step 1: Load Data
