@@ -1,4 +1,4 @@
-###  Mini proj 3
+###  Mini project 3
 ### McGill University
 ### Group 16
 
@@ -6,8 +6,6 @@
 Step 1: Load Data
 '''
 # ref: https://www.kaggle.com/comp551f2018ta/example-to-load-data
-
-
 import numpy as np
 import pandas as pd
 import os
@@ -31,12 +29,11 @@ print(train_labels.shape)
 
 import matplotlib.pyplot as plt
 
-#Let's show image with id 13
+# show image with id 13
 img_idx = 13
 
 plt.title('Label: {}'.format(train_labels.iloc[img_idx]['Category']))
 plt.imshow(train_images[img_idx])
-# have a look on this image
 plt.show()
 
 '''
