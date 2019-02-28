@@ -5,6 +5,7 @@
 '''
 Step 1: Load Data
 '''
+# ref: https://www.kaggle.com/comp551f2018ta/example-to-load-data
 
 # This Python 3 environment comes with many helpful analytics libraries installed
 # It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python
