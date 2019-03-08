@@ -35,9 +35,12 @@ plt.title('Label: {}'.format(train_labels.iloc[img_idx]['Category']))
 plt.imshow(train_images[img_idx])
 plt.show()
 
-'''
-Step 2: Train models
-'''
+#############
+
+###here needs to add crop train/test image by largest bounding box !!!
+
+#############
+
 '''
 Step 2: Train models
 '''
