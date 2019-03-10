@@ -108,3 +108,10 @@ model.fit(X_train, y_train,
           epochs=epochs,
           verbose=1,
           validation_data=(X_vali,y_vali))
+
+predictions = model.predict_classes(X_test)
+print(predictions[0:20])
+
+pd.DataFrame(predictions).to_csv("mnist_prediction.csv")
+submissions = pd.DataFrame({"Id" : list(range(1, len(predictions)+1)), "Category" : predictions})
+submissions.to_csv("digit_recognizer.csv", index=False, header=True)
