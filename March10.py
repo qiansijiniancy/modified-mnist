@@ -47,7 +47,7 @@ from keras.preprocessing.image import ImageDataGenerator
 import cv2
 
 x_tr = np.array(train_images)
-y_tr = np.array(train_labels)
+#y_tr = np.array(train_labels)
 x_ts = np.expand_dims(test_images, axis=1)
 
 print(x_tr.shape)
@@ -55,13 +55,10 @@ print(x_ts.shape)
 
 X_train = x_tr.reshape(x_tr.shape[0], 64, 64,1)
 X_test = x_ts.reshape(x_ts.shape[0], 64, 64, 1)
-#y_train = y_tr
 
 
 from keras.utils import np_utils
 y_tr = np_utils.to_categorical(train_labels)
-# X_train /= 255
-# X_test /=255
 
 X_train = X_train.astype('float32') / 255
 X_test = X_test.astype('float32') / 255
