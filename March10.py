@@ -113,5 +113,3 @@ predictions = model.predict_classes(X_test)
 print(predictions[0:20])
 
 pd.DataFrame(predictions).to_csv("mnist_prediction.csv")
-submissions = pd.DataFrame({"Id" : list(range(1, len(predictions)+1)), "Category" : predictions})
-submissions.to_csv("digit_recognizer.csv", index=False, header=True)
