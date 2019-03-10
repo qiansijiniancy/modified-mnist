@@ -37,7 +37,9 @@ plt.show()
 
 #############
 
-###here needs to add crop train/test image by largest bounding box !!!
+### here needs to add crop train/test image by largest bounding box 
+### dont know how to do this.
+### give up.
 
 #############
 
