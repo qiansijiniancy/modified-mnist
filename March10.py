@@ -79,6 +79,7 @@ print(X_test.shape)
 
 print(y_train[0:20])
 
+# test vgg net？
 import keras
 input_shape = (64,64,1)
 model = Sequential()
