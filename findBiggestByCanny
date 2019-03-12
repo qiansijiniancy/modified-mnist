@@ -1,0 +1,126 @@
+###  Mini project 3
+### McGill University
+### Group 16
+
+'''
+Step 1: Load Data
+'''
+import os
+
+# ref: https://www.kaggle.com/comp551f2018ta/example-to-load-data
+import numpy as np
+import pandas as pd
+import torch
+import torch.utils.data
+import torch.backends.cudnn
+import pickle
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.utils.data
+from torch.autograd import Variable
+
+from sklearn.model_selection import train_test_split
+
+import matplotlib.pyplot as plt
+import torch
+from sklearn.model_selection import StratifiedShuffleSplit
+from torch import nn
+from torchvision import models, transforms
+from datetime import datetime
+from sklearn.model_selection import train_test_split
+import torch.optim as optim
+import cv2
+
+
+cwd = os.getcwd()
+input_path = cwd+"/data"
+print(os.listdir(input_path))
+
+## load data
+train_images = pd.read_pickle(cwd + '/data/train_images.pkl')
+test_images = pd.read_pickle(cwd + '/data/test_images.pkl')
+train_labels = pd.read_csv(cwd +'/data/train_labels.csv').values[:, 1]
+
+#### DATA LOADING AS ARRAY#####################
+X_train = np.array(train_images)
+X_test = np.expand_dims(test_images, axis=1)
+from keras.utils import np_utils
+y_tr = np_utils.to_categorical(train_labels)
+
+X_train = X_train.astype('float32') / 255
+X_test = X_test.astype('float32') / 255
+
+
+########### clear background for better recognition
+for i, x_i in enumerate(X_train):
+    x_i = x_i.squeeze().astype(np.uint8)
+    _, output, stats, _ = cv2.connectedComponentsWithStats(x_i, connectivity=8)
+
+    x_i_rm = np.zeros(output.shape)
+    for j, size in enumerate(stats[1:, -1]):  # Ignore the background
+        if size >= 50:
+            x_i_rm[output == j + 1] = 255
+    X_train[i] = x_i_rm.reshape(x_i.shape)
+
+for i, x_i in enumerate(X_test):
+    x_i = x_i.squeeze().astype(np.uint8)
+    _, output, stats, _ = cv2.connectedComponentsWithStats(x_i, connectivity=8)
+
+    x_i_rm = np.zeros(output.shape)
+    for j, size in enumerate(stats[1:, -1]):  # Ignore the background
+        if size >= 50:
+            x_i_rm[output == j + 1] = 255
+    X_test[i] = x_i_rm.reshape(x_i.shape)
+
+
+
+print(train_images.shape)
+print(train_labels.shape)
+print(test_images.shape)
+print(train_labels[1:20])
+###################################################
+
+
+
+############# choosing 1 image from the whole data #####
+cv2.imwrite('oneImage.jpg',X_train[52])
+img = cv2.imread('oneImage.jpg')
+#############
+
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) # convert it to grayscale in case its not BW yet
+cannied = cv2.Canny(gray,60,200) # canny it
+
+##### contours over the image and draw them
+contours, hierarchy= cv2.findContours(cannied,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+
+for contour in contours:
+    print(cv2.boundingRect(contour))
+cv2.imshow('img',img)
+cv2.drawContours(img, contours, -1, (0, 225, 0), 3)
+cv2.imshow('contours',img) # drawing contour on image EDGE
+
+
+boundingsArea = []
+count = 1
+
+for i, con in enumerate(contours):
+    areaOfContour = cv2.contourArea(con)
+    boundingsArea.append(areaOfContour)
+
+##### sorting it so we can find the biggest
+sortedArray = sorted(zip(boundingsArea, contours), key=lambda x: x[0], reverse=True)
+
+###find the biggeest contour that is [0][1] (second biggest will be [1][1],etc)
+biggestContour = sortedArray[0][1]
+
+#draw it
+x, y, w, h = cv2.boundingRect(biggestContour)
+cv2.drawContours(img, biggestContour, -1, (255, 0, 0), 2)
+rectangle = cv2.rectangle(gray, (x, y), (x+w, y+h), (255,255,255), 2)
+
+cv2.imshow('Biggest', rectangle)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
