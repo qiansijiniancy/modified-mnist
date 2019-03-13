@@ -212,6 +212,9 @@ model.compile(loss=keras.losses.categorical_crossentropy,
 
 print(model.summary())
 
+epochs = 10
+batch_size = 128
+num_steps= 1000
 '''
 # This part is under testing.
 # should improve the model but running really slow
