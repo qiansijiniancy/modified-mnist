@@ -231,10 +231,6 @@ model.fit_generator(data_generator.flow(X_train, y_train,batch_size=batch_size),
           validation_data=(X_val,y_val))
 '''
 
-epochs = 10
-batch_size = 128
-num_steps= 1000
-
 model.fit_generator((X_train, y_train),
           batch_size=batch_size,
           epochs=epochs,
