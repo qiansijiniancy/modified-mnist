@@ -213,7 +213,8 @@ model.compile(loss=keras.losses.categorical_crossentropy,
 print(model.summary())
 
 '''
-This part is under testing.
+# This part is under testing.
+# should improve the model a lot but running really slow
 data_generator = ImageDataGenerator(rotation_range=20,
                                     width_shift_range=0.2,
                                     height_shift_range=0.2,
