@@ -235,7 +235,7 @@ model.fit_generator((X_train, y_train),
           batch_size=batch_size,
           epochs=epochs,
           verbose=1,
-          steps_per_epoch=num_steps,
+   #       steps_per_epoch=num_steps,
           validation_data=(X_val,y_val))
 
 
