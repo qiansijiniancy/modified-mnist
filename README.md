@@ -8,5 +8,6 @@
 
 **Implementation**
 
-- Please check proj3.ipynb
+- The data is from https://www.kaggle.com/c/comp-551-w2019-project-3-modified-mnist/data
+- Please run proj3.ipynb
 - Our codes can also be implemented from Google Colab book at https://colab.research.google.com/drive/1yUvnkd01rnwWsF-ce1g0e8ult_KWt9d6#scrollTo=Njz5V9zOsowg
