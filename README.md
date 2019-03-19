@@ -8,5 +8,5 @@
 
 **Implementation**
 
-- 
+- Please check proj3.ipynb
 - Our codes can also be implemented from Google Colab book at https://colab.research.google.com/drive/1yUvnkd01rnwWsF-ce1g0e8ult_KWt9d6#scrollTo=Njz5V9zOsowg
