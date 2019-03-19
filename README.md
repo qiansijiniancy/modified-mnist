@@ -5,6 +5,7 @@
 - keras (https://keras.io)
 - matplotlib (https://matplotlib.org)
 - tensorflow (https://www.tensorflow.org)
+- opencv (https://opencv.org)
 
 **Implementation**
 
